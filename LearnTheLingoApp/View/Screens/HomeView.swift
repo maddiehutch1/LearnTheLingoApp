@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct HomeView: View {
+    var languageViewModel: LanguageViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Test!")
+        NavigationStack {
+            List(languageViewModel.topics) { topic in
+                VStack(alignment: .leading) {
+                    Text(topic.title)
+                       .font(.headline)
+                    Button {
+                        languageViewModel.toggleLessonRead(for: topic.title)
+                    } label: {
+                        Text("Lesson read: \(languageViewModel.progress(for: topic.title).lessonRead)")
+                            .font(.subheadline)
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle("\(languageViewModel.languageName)")
         }
-        .padding()
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(languageViewModel: LanguageViewModel())
 }
