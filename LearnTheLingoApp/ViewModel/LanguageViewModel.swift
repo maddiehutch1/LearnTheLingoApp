@@ -40,7 +40,7 @@ import SwiftUI
         lessonPlan.topics.first(where: { $0.title == title }) ?? lessonPlan.topics[0]
     }
     
-    func checkAnswer(for question: String, answer: Bool) {
+    func checkAnswer(for question: String, answer: String) {
         
     }
     

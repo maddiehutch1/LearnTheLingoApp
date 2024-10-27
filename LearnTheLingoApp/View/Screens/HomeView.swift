@@ -36,21 +36,21 @@ struct HomeView: View {
                                     } label: {
                                         Text("Lesson read: \(languageViewModel.progress(for: topic.title).lessonRead)")
                                             .font(.system(size: 15, weight: .light, design: .rounded))
-                                            .foregroundColor(.mint)
+                                            .foregroundColor(.white)
                                     }
                                     Button {
                                         languageViewModel.toggleVocabStudied(for: topic.title)
                                     } label: {
                                         Text("Flashcards studied: \(languageViewModel.progress(for: topic.title).vocabularyStudied)")
                                             .font(.system(size: 15, weight: .light, design: .rounded))
-                                            .foregroundColor(.mint)
+                                            .foregroundColor(.white)
                                     }
                                     Button {
                                         languageViewModel.toggleQuizPassed(for: topic.title)
                                     } label: {
                                         Text("Quiz passed: \(languageViewModel.progress(for: topic.title).quizPassed)")
                                             .font(.system(size: 15, weight: .light, design: .rounded))
-                                            .foregroundColor(.mint)
+                                            .foregroundColor(.white)
                                     }
                                 }
                             }

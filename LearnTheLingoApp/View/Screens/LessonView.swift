@@ -9,8 +9,7 @@ import SwiftUI
 
 struct LessonView: View {
     var languageViewModel = LanguageViewModel()
-//    @State private var readingCompleted = languageViewModel.progress(for: topic.title).lessonRead
-    
+
     let topicTitle: String
     
     var topic: Language.Topic {
@@ -22,7 +21,6 @@ struct LessonView: View {
             VStack {
                 Text(topic.lessonText)
                 HStack {
-//                    Toggle("Lesson Completed", isOn: readingCompleted)
                     NavigationLink {
                         FlashcardView(languageViewModel: LanguageViewModel(), listOfTerms: topic.vocabulary)
                     } label: {
