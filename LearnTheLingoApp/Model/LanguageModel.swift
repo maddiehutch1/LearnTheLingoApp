@@ -401,9 +401,428 @@ struct SpanishLessonPlan: LessonPlan {
                         options: ["Quiero pedir", "Necesito ayuda", "Puedo pagar"],
                         answer: "Quiero pedir"
                     )]
-            )
-        ]
+            ),
+                
+                // Clothing
+                Language.Topic(
+                    title: "Clothing",
+                    lessonText: "testing",
+                    vocabulary: [
+                        Language.Term(
+                            spanishWord: "la ropa",
+                            translation: "clothes"
+                        )],
+                    quiz: [
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'shirt'?",
+                            options: ["Camisa", "Zapato", "Chaqueta"],
+                            answer: "Camisa"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'pants' in Spanish?",
+                            options: ["Sombrero", "Pantalones", "Falda"],
+                            answer: "Pantalones"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'shoes'?",
+                            options: ["Calcetines", "Zapatos", "Guantes"],
+                            answer: "Zapatos"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'dress' in Spanish?",
+                            options: ["Vestido", "Falda", "Abrigo"],
+                            answer: "Vestido"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'hat' in Spanish?",
+                            options: ["Sombrero", "Camisa", "Cinturón"],
+                            answer: "Sombrero"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'jacket'?",
+                            options: ["Bufanda", "Chaqueta", "Gorra"],
+                            answer: "Chaqueta"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'skirt' in Spanish?",
+                            options: ["Falda", "Pantalones", "Zapatos"],
+                            answer: "Falda"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'socks' in Spanish?",
+                            options: ["Cinturón", "Guantes", "Calcetines"],
+                            answer: "Calcetines"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'gloves'?",
+                            options: ["Guantes", "Abrigo", "Zapatos"],
+                            answer: "Guantes"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'scarf' in Spanish?",
+                            options: ["Bufanda", "Cinturón", "Camisa"],
+                            answer: "Bufanda"
+                        )]
+                ),
+                
+                // Weather
+                Language.Topic(
+                    title: "Weather",
+                    lessonText: "testing",
+                    vocabulary: [
+                        Language.Term(
+                            spanishWord: "la lluvia",
+                            translation: "rain"
+                        )],
+                    quiz: [
+                        Language.QuizItem(
+                            question: "How do you say 'It's raining' in Spanish?",
+                            options: ["Está lloviendo", "Hace frío", "Hace sol"],
+                            answer: "Está lloviendo"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish phrase for 'It's sunny'?",
+                            options: ["Está nublado", "Hace viento", "Hace sol"],
+                            answer: "Hace sol"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'snow'?",
+                            options: ["Niebla", "Nieve", "Granizo"],
+                            answer: "Nieve"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'It's windy' in Spanish?",
+                            options: ["Está nevando", "Hace viento", "Hace calor"],
+                            answer: "Hace viento"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'It's cold' in Spanish?",
+                            options: ["Hace calor", "Hace frío", "Está húmedo"],
+                            answer: "Hace frío"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish phrase for 'It's snowing'?",
+                            options: ["Está nevando", "Está nublado", "Hace buen tiempo"],
+                            answer: "Está nevando"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'It's cloudy' in Spanish?",
+                            options: ["Está despejado", "Hace sol", "Está nublado"],
+                            answer: "Está nublado"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'It's hot' in Spanish?",
+                            options: ["Hace frío", "Hace calor", "Está ventoso"],
+                            answer: "Hace calor"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'storm'?",
+                            options: ["Tormenta", "Lluvia", "Granizo"],
+                            answer: "Tormenta"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'fog'?",
+                            options: ["Viento", "Niebla", "Humedad"],
+                            answer: "Niebla"
+                        )
+                    ]
+                ),
+                
+                // Halloween special
+                Language.Topic(
+                    title: "Halloween",
+                    lessonText: "testing",
+                    vocabulary: [Language.Term(spanishWord: "la calabaza", translation: "pumpkin")],
+                    quiz: [
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'pumpkin'?",
+                            options: ["Bruja", "Calabaza", "Fantasma"],
+                            answer: "Calabaza"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'ghost' in Spanish?",
+                            options: ["Calavera", "Vampiro", "Fantasma"],
+                            answer: "Fantasma"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'witch'?",
+                            options: ["Bruja", "Monstruo", "Esqueleto"],
+                            answer: "Bruja"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'skeleton' in Spanish?",
+                            options: ["Esqueleto", "Calavera", "Araña"],
+                            answer: "Esqueleto"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'spider' in Spanish?",
+                            options: ["Murciélago", "Araña", "Vampiro"],
+                            answer: "Araña"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'vampire'?",
+                            options: ["Murciélago", "Vampiro", "Fantasma"],
+                            answer: "Vampiro"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'bat' in Spanish?",
+                            options: ["Araña", "Monstruo", "Murciélago"],
+                            answer: "Murciélago"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'monster' in Spanish?",
+                            options: ["Monstruo", "Bruja", "Esqueleto"],
+                            answer: "Monstruo"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'skull'?",
+                            options: ["Esqueleto", "Calavera", "Calabaza"],
+                            answer: "Calavera"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'costume' in Spanish?",
+                            options: ["Disfraz", "Bruja", "Calabaza"],
+                            answer: "Disfraz"
+                        )
+                    ]
+                ),
+                
+                // Family
+                Language.Topic(
+                    title: "Family",
+                    lessonText: "testing",
+                    vocabulary: [Language.Term(spanishWord: "la familia", translation: "family")],
+                    quiz: [
+                        Language.QuizItem(
+                            question: "How do you say 'mother' in Spanish?",
+                            options: ["Hermana", "Madre", "Abuela"],
+                            answer: "Madre"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'father'?",
+                            options: ["Padre", "Tío", "Abuelo"],
+                            answer: "Padre"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'brother' in Spanish?",
+                            options: ["Hermano", "Primo", "Hijo"],
+                            answer: "Hermano"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'sister'?",
+                            options: ["Tía", "Hermana", "Prima"],
+                            answer: "Hermana"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'grandfather' in Spanish?",
+                            options: ["Primo", "Abuelo", "Sobrino"],
+                            answer: "Abuelo"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'grandmother' in Spanish?",
+                            options: ["Abuela", "Madre", "Prima"],
+                            answer: "Abuela"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'uncle'?",
+                            options: ["Tío", "Sobrino", "Hermano"],
+                            answer: "Tío"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'aunt' in Spanish?",
+                            options: ["Tía", "Madre", "Prima"],
+                            answer: "Tía"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'son' in Spanish?",
+                            options: ["Hijo", "Nieto", "Hermano"],
+                            answer: "Hijo"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'daughter'?",
+                            options: ["Hermana", "Sobrina", "Hija"],
+                            answer: "Hija"
+                        )
+                    ]
+                ),
+                
+                // School
+                Language.Topic(
+                    title: "School",
+                    lessonText: "testing",
+                    vocabulary: [Language.Term(spanishWord: "la escuela", translation: "school")],
+                    quiz: [
+                        Language.QuizItem(
+                            question: "How do you say 'school' in Spanish?",
+                            options: ["Escuela", "Clase", "Biblioteca"],
+                            answer: "Escuela"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'teacher'?",
+                            options: ["Estudiante", "Profesor", "Escuela"],
+                            answer: "Profesor"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'student' in Spanish?",
+                            options: ["Estudiante", "Clase", "Maestro"],
+                            answer: "Estudiante"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'class'?",
+                            options: ["Clase", "Silla", "Mesa"],
+                            answer: "Clase"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'book' in Spanish?",
+                            options: ["Cuaderno", "Libro", "Lápiz"],
+                            answer: "Libro"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'notebook' in Spanish?",
+                            options: ["Cuaderno", "Carpeta", "Hoja"],
+                            answer: "Cuaderno"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'pencil'?",
+                            options: ["Lápiz", "Tiza", "Pluma"],
+                            answer: "Lápiz"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'folder' in Spanish?",
+                            options: ["Carpeta", "Libreta", "Tijeras"],
+                            answer: "Carpeta"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'chalk' in Spanish?",
+                            options: ["Tiza", "Lápiz", "Marcador"],
+                            answer: "Tiza"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'scissors'?",
+                            options: ["Tijeras", "Cinta", "Pegamento"],
+                            answer: "Tijeras"
+                        )
+                    ]
+                ),
+                
+                // Body
+                Language.Topic(
+                    title: "Body",
+                    lessonText: "testing",
+                    vocabulary: [Language.Term(spanishWord: "el cuerpo", translation: "body")],
+                    quiz: [
+                        Language.QuizItem(
+                            question: "How do you say 'head' in Spanish?",
+                            options: ["Cabeza", "Mano", "Brazo"],
+                            answer: "Cabeza"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'hand'?",
+                            options: ["Pierna", "Mano", "Pie"],
+                            answer: "Mano"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'leg' in Spanish?",
+                            options: ["Pierna", "Brazo", "Cabeza"],
+                            answer: "Pierna"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'foot'?",
+                            options: ["Dedo", "Pie", "Pierna"],
+                            answer: "Pie"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'arm' in Spanish?",
+                            options: ["Pierna", "Brazo", "Mano"],
+                            answer: "Brazo"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'eye' in Spanish?",
+                            options: ["Nariz", "Boca", "Ojo"],
+                            answer: "Ojo"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'nose'?",
+                            options: ["Oreja", "Nariz", "Ojo"],
+                            answer: "Nariz"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'ear' in Spanish?",
+                            options: ["Ojo", "Nariz", "Oreja"],
+                            answer: "Oreja"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'mouth' in Spanish?",
+                            options: ["Boca", "Dedo", "Mano"],
+                            answer: "Boca"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'finger'?",
+                            options: ["Dedo", "Pie", "Ojo"],
+                            answer: "Dedo"
+                        )
+                    ]
+                ),
+                
+                // Animals
+                Language.Topic(
+                    title: "Animals",
+                    lessonText: "testing",
+                    vocabulary: [Language.Term(spanishWord: "el animal", translation: "animal")],
+                    quiz: [
+                        Language.QuizItem(
+                            question: "How do you say 'dog' in Spanish?",
+                            options: ["Gato", "Perro", "Pájaro"],
+                            answer: "Perro"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'cat'?",
+                            options: ["Gato", "Rata", "Conejo"],
+                            answer: "Gato"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'bird' in Spanish?",
+                            options: ["Perro", "Gato", "Pájaro"],
+                            answer: "Pájaro"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'rabbit'?",
+                            options: ["Perro", "Gato", "Conejo"],
+                            answer: "Conejo"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'fish' in Spanish?",
+                            options: ["Pez", "Tortuga", "Rana"],
+                            answer: "Pez"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'turtle' in Spanish?",
+                            options: ["Rana", "Tortuga", "Serpiente"],
+                            answer: "Tortuga"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'snake'?",
+                            options: ["Serpiente", "Lobo", "Ratón"],
+                            answer: "Serpiente"
+                        ),
+                        Language.QuizItem(
+                            question: "Which of these means 'wolf' in Spanish?",
+                            options: ["Oso", "Lobo", "Gato"],
+                            answer: "Lobo"
+                        ),
+                        Language.QuizItem(
+                            question: "How do you say 'mouse' in Spanish?",
+                            options: ["Ratón", "Gato", "Perro"],
+                            answer: "Ratón"
+                        ),
+                        Language.QuizItem(
+                            question: "What is the Spanish word for 'bear'?",
+                            options: ["Oso", "León", "Elefante"],
+                            answer: "Oso"
+                        )
+                    ]
+                )
+            ]
+        }
     }
-    
-    
-}
+

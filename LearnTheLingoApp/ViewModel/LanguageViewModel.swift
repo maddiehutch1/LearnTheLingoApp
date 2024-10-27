@@ -46,6 +46,9 @@ import SwiftUI
         lessonPlan.toggleLessonRead(for: title)
     }
     
+//    func selectAnswer(for question: String) -> Language.QuizItem {
+//        lessonPlan.topics.first(
+//    }
     
     // MARK: - Private Helpers
     

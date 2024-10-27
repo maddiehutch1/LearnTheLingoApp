@@ -34,7 +34,7 @@ struct LessonView: View {
                         }
                     }
                     NavigationLink {
-                        QuizView(languageViewModel: LanguageViewModel(), topicTitle: String(topic.title))
+                        QuizView(languageViewModel: LanguageViewModel(), topicTitle: topic.title, listOfQuestions: topic.quiz)
                     } label: {
                         ZStack {
                             Rectangle()

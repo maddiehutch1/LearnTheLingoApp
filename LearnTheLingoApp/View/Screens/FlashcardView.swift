@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FlashcardView: View {
+
+    @State private var isFaceUp = true
     
     var languageViewModel = LanguageViewModel()
-    
-    @State private var isFaceUp = true
     
     let listOfTerms: [Language.Term]
     
