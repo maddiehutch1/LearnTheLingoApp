@@ -34,6 +34,12 @@ import SwiftUI
         
         return progressRecord
     }
+    
+    // helps us know which topic is selected by a user
+    func selectedTopic(for title: String) -> Language.Topic {
+        lessonPlan.topics.first(where: { $0.title == title }) ?? lessonPlan.topics[0]
+    }
+    
     // MARK: - User Intents
     
     func toggleLessonRead(for title: String) {

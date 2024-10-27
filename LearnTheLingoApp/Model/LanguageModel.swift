@@ -16,7 +16,7 @@ protocol LessonPlan {
 }
 
 struct Language {
-    struct Topic: Identifiable {
+    struct Topic: Identifiable, Hashable {
         let id = UUID()
         let title: String
         let lessonText: String
@@ -24,12 +24,12 @@ struct Language {
         let quiz: [QuizItem]
     }
     
-    struct Term {
+    struct Term: Hashable, Equatable {
         let spanishWord: String
         let translation: String
     }
     
-    struct QuizItem {
+    struct QuizItem: Hashable, Equatable {
         let question: String
         let options: [String]
         let answer: String
