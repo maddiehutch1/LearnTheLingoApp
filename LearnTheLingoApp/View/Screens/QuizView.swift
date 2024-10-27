@@ -38,6 +38,8 @@ struct QuizQuestionView: View {
     let pregunta: Language.QuizItem
     
     @State private var selectedAnswer: String? = nil
+    @State private var hasAnswered = false
+    @State private var score = 0
     
     var body: some View {
         VStack {
@@ -48,13 +50,19 @@ struct QuizQuestionView: View {
                 ZStack {
                     Rectangle()
                         .frame(width: 150, height: 50)
-                        .foregroundColor(answer == selectedAnswer && answer == pregunta.answer ? .green : .secondary)
+                        .foregroundColor(
+                            hasAnswered ?
+                            (answer == pregunta.answer ? .green :
+                            (answer == selectedAnswer ? .red : .secondary))
+                            : .secondary
+                        )
                         .cornerRadius(30)
                     Text("\(answer)")
                         .foregroundColor(.white)
                 }
                 .onTapGesture {
                     selectedAnswer = answer
+                    hasAnswered.toggle()
                 }
             }
         }
@@ -66,7 +74,16 @@ struct ResultsView: View {
     let numberOfQuestions: Int
     
     var body: some View {
-        Text("")
+        VStack {
+            Text("Your Results")
+                .font(.headline)
+                .padding()
+            Text("\(correctAnswers) / \(numberOfQuestions)")
+                .font(.title)
+            Button("Restart Quiz") {
+                
+            }
+        }
     }
 }
 

@@ -40,6 +40,10 @@ import SwiftUI
         lessonPlan.topics.first(where: { $0.title == title }) ?? lessonPlan.topics[0]
     }
     
+    func checkAnswer(for question: String, answer: Bool) {
+        
+    }
+    
     // MARK: - User Intents
     
     func toggleLessonRead(for title: String) {
