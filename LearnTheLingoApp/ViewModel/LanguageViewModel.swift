@@ -50,6 +50,14 @@ import SwiftUI
         lessonPlan.toggleLessonRead(for: title)
     }
     
+    func toggleVocabStudied(for title: String) {
+        lessonPlan.toggleVocabStudied(for: title)
+    }
+    
+    func toggleQuizPassed(for title: String) {
+        lessonPlan.toggleQuizPassed(for: title)
+    }
+    
 //    func selectAnswer(for question: String) -> Language.QuizItem {
 //        lessonPlan.topics.first(
 //    }

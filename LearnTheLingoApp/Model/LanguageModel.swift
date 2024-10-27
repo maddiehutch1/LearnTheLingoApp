@@ -13,6 +13,9 @@ protocol LessonPlan {
     var progress: [Language.Progress] { get set }
     
     mutating func toggleLessonRead(for title: String);
+    mutating func toggleVocabStudied(for title: String);
+    mutating func toggleQuizPassed(for title: String);
+
 }
 
 struct Language {
@@ -78,6 +81,35 @@ struct SpanishLessonPlan: LessonPlan {
         }
     }
     
+    mutating func toggleVocabStudied(for title: String) {
+        if let index = progress.firstIndex(where: { $0.topicTitle == title }) {
+            progress[index].vocabularyStudied.toggle()
+            UserDefaults.standard
+                .set(
+                    progress[index].vocabularyStudied,
+                    forKey: key(for: title, type: Key.vocabularyStudied)
+                )
+        } else {
+            progress.append(Language.Progress(topicTitle: title))
+            toggleVocabStudied(for: title)
+        }
+    }
+    
+    mutating func toggleQuizPassed(for title: String) {
+        if let index = progress.firstIndex(where: { $0.topicTitle == title }) {
+            progress[index].quizPassed.toggle()
+            UserDefaults.standard
+                .set(
+                    progress[index].quizPassed,
+                    forKey: key(for: title, type: Key.quizPassed)
+                )
+        } else {
+            progress.append(Language.Progress(topicTitle: title))
+            toggleQuizPassed(for: title)
+        }
+    }
+
+    
     // NEEDSWORK: implement helpers to update progress as neded
     
     private static func readProgressRecords() -> [Language.Progress] {
@@ -90,6 +122,16 @@ struct SpanishLessonPlan: LessonPlan {
             progressRecord.lessonRead = UserDefaults.standard
                 .bool(
                     forKey: key(for: topic.title, type: Key.lessonRead)
+                )
+            
+            progressRecord.vocabularyStudied = UserDefaults.standard
+                .bool(
+                    forKey: key(for: topic.title, type: Key.vocabularyStudied)
+                )
+            
+            progressRecord.quizPassed = UserDefaults.standard
+                .bool(
+                    forKey: key(for: topic.title, type: Key.quizPassed)
                 )
             
             //NEEDSWORK: implement this for the other three progress items

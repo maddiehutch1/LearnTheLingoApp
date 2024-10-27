@@ -28,13 +28,27 @@ struct HomeView: View {
                                     .foregroundColor(.secondary)
                                     .cornerRadius(30)
                                 VStack {
-                                    Text(topic.title)
+                                    Text("\(topic.title)")
                                         .font(.system(size: 20, weight: .bold, design: .rounded))
                                         .foregroundColor(.white)
                                     Button {
                                         languageViewModel.toggleLessonRead(for: topic.title)
                                     } label: {
                                         Text("Lesson read: \(languageViewModel.progress(for: topic.title).lessonRead)")
+                                            .font(.system(size: 15, weight: .light, design: .rounded))
+                                            .foregroundColor(.mint)
+                                    }
+                                    Button {
+                                        languageViewModel.toggleVocabStudied(for: topic.title)
+                                    } label: {
+                                        Text("Flashcards studied: \(languageViewModel.progress(for: topic.title).vocabularyStudied)")
+                                            .font(.system(size: 15, weight: .light, design: .rounded))
+                                            .foregroundColor(.mint)
+                                    }
+                                    Button {
+                                        languageViewModel.toggleQuizPassed(for: topic.title)
+                                    } label: {
+                                        Text("Quiz passed: \(languageViewModel.progress(for: topic.title).quizPassed)")
                                             .font(.system(size: 15, weight: .light, design: .rounded))
                                             .foregroundColor(.mint)
                                     }

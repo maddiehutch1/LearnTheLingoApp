@@ -59,6 +59,12 @@ struct QuizQuestionView: View {
                         .cornerRadius(30)
                     Text("\(answer)")
                         .foregroundColor(.white)
+//                    if > 0 {
+//                        Rectangle()
+//                            .frame(width: 150, height: 50)
+//                            .foregroundColor(.secondary)
+//                            .cornerRadius(30)
+//                    }
                 }
                 .onTapGesture {
                     selectedAnswer = answer
@@ -66,8 +72,27 @@ struct QuizQuestionView: View {
                 }
             }
         }
+//        // Check if this is the last question
+//        if isLastQuestion() {
+//            Button(action: {
+//                // Action for completing the quiz
+//                print("Quiz Completed")
+//            }) {
+//                Rectangle()
+//                    .frame(width: 150, height: 50)
+//                    .foregroundColor(.secondary)
+//                    .cornerRadius(30)
+//                Text("Complete Quiz")
+//                    .foregroundColor(.white)
+//            }
+//        }
     }
 }
+
+//private func isLastQuestion() -> Bool {
+//        // Assuming you have access to the number of questions
+//        return pregunta.id == listOfQuestions.last?.id // Modify this as per your implementation
+//    }
 
 struct ResultsView: View {
     let correctAnswers: Int
