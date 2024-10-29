@@ -11,7 +11,7 @@ import AVFoundation
 struct SoundPlayer {
     var player: AVAudioPlayer?
     
-    mutating func playSound(named soundName: String) async {
+    mutating func playSound(named soundName: String) {
         guard let path = Bundle.main.path(forResource: soundName, ofType: nil)
         else {
             return

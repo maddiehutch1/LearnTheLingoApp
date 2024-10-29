@@ -63,12 +63,15 @@ struct QuizQuestionView: View {
     var totalQuestions: Int
     var languageViewModel: LanguageViewModel
     
+    let timer = Timer()
+    
     @State private var showResultView = false
     @State private var selectedAnswer: String? = nil
     @State private var hasAnswered = false
     
     var body: some View {
         VStack {
+            //timer.scheduledTimer(timerInterval: 20.0)
             Text("\(pregunta.question)")
                 .font(.title)
                 .multilineTextAlignment(.center) // Centers text within the Text view
@@ -92,13 +95,14 @@ struct QuizQuestionView: View {
                     selectedAnswer = answer
                     hasAnswered = true
                     
+
                     if let selectedAnswerWithChoice = selectedAnswer {
                         languageViewModel.isCorrect = languageViewModel.isCorrect(selectedAnswer: selectedAnswerWithChoice, correctAnswer: pregunta.answer)
+                        languageViewModel.chooseAnswer()
                     }
                     
                     languageViewModel.scoreTracker(increment: 10)
-                    
-                    
+
                 }
             }
             .padding()

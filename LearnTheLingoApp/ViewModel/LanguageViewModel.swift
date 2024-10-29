@@ -15,6 +15,8 @@ import SwiftUI
     private var score = 0
     var isCorrect: Bool = false
     
+    private var soundPlayer = SoundPlayer()
+    
     // MARK: - Model Access
     
     var languageName: String {
@@ -62,6 +64,7 @@ import SwiftUI
             return true
         }
         return false
+        
     }
     
     func getScore() -> Int {
@@ -82,7 +85,11 @@ import SwiftUI
         }
     }
     
-    func nextQuestion() {
+    func chooseAnswer() {
+        if isCorrect {
+            soundPlayer.playSound(named: "correctping")
+        }
+            soundPlayer.playSound(named: "incorrectping")
 
     }
     
