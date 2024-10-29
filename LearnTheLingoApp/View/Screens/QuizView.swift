@@ -9,37 +9,61 @@ import SwiftUI
 
 struct QuizView: View {
     
+    @State private var currentIndex = 0
     var languageViewModel: LanguageViewModel
     
     let topicTitle: String
-
+    
     var topic: Language.Topic {
         languageViewModel.selectedTopic(for: topicTitle)
     }
     
     let listOfQuestions: [Language.QuizItem]
-
+    
     var body: some View {
-        Text("\(languageViewModel.getScore())")
-        TabView {
-            // find a way to connect to database
-            ForEach(listOfQuestions, id: \.self) { question in
-                QuizQuestionView(pregunta: question, languageViewModel: languageViewModel)
+        NavigationView {
+            VStack {
+                HStack {
+                    VStack {
+                        Text("Question")
+                            .font(.subheadline)
+                        Text("\(currentIndex + 1) / \(listOfQuestions.count)")
+                            .font(.title)
+                    }
+                    .padding(.trailing)
+                    VStack{
+                        Text("Current Score")
+                            .font(.subheadline)
+                        Text("\(languageViewModel.getScore())")
+                            .font(.title)
+                    }
+                    .padding(.leading)
+
+                }
+                
+                
+                TabView(selection: $currentIndex) {
+                    // find a way to connect to database
+                    ForEach(0..<listOfQuestions.count, id: \.self) { index in
+                        QuizQuestionView(pregunta: listOfQuestions[index], index: index, totalQuestions: listOfQuestions.count, languageViewModel: languageViewModel)
+                    }
+                }
+                .tabViewStyle(.page)
             }
+            .background(Color.lightTan)
         }
-        .tabViewStyle(.page)
-        .background(Color.lightTan)
-
-
     }
 }
+
 
 struct QuizQuestionView: View {
     
     let pregunta: Language.QuizItem
-    
+    var index: Int
+    var totalQuestions: Int
     var languageViewModel: LanguageViewModel
     
+    @State private var showResultView = false
     @State private var selectedAnswer: String? = nil
     @State private var hasAnswered = false
     
@@ -47,6 +71,8 @@ struct QuizQuestionView: View {
         VStack {
             Text("\(pregunta.question)")
                 .font(.title)
+                .multilineTextAlignment(.center) // Centers text within the Text view
+                .frame(maxWidth: .infinity, alignment: .center)
                 .padding()
             ForEach(pregunta.options, id: \.self) { answer in
                 ZStack {
@@ -64,36 +90,40 @@ struct QuizQuestionView: View {
                 }
                 .onTapGesture {
                     selectedAnswer = answer
-                    hasAnswered.toggle()
+                    hasAnswered = true
                     
                     if let selectedAnswerWithChoice = selectedAnswer {
                         languageViewModel.isCorrect = languageViewModel.isCorrect(selectedAnswer: selectedAnswerWithChoice, correctAnswer: pregunta.answer)
                     }
                     
                     languageViewModel.scoreTracker(increment: 10)
+                    
+                    
+                }
+            }
+            .padding()
+            .disabled(hasAnswered)
+            if hasAnswered && (index < totalQuestions - 1) {
+                Text("SWIPE NEXT →")
+                    .foregroundColor(.white)
+                    .bold()
+                    .font(.system(size: 25))
+            } else if hasAnswered {
+                NavigationLink(destination: ResultsView(score: languageViewModel.getScore())) {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 150, height: 50)
+                            .foregroundColor(.primary)
+                            .cornerRadius(30)
+                        Text("View Results")
+                            .foregroundColor(.white)
+                    }
                 }
             }
         }
     }
 }
 
-struct ResultsView: View {
-    let correctAnswers: Int
-    let numberOfQuestions: Int
-    
-    var body: some View {
-        VStack {
-            Text("Your Results")
-                .font(.headline)
-                .padding()
-            Text("\(correctAnswers) / \(numberOfQuestions)")
-                .font(.title)
-            Button("Restart Quiz") {
-                
-            }
-        }
-    }
-}
 
 #Preview {
     QuizView(languageViewModel: LanguageViewModel(), topicTitle: "Numbers", listOfQuestions: [Language.QuizItem(

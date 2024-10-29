@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@Observable class LanguageViewModel {
+@Observable class LanguageViewModel: ObservableObject {
     
     // MARK: - Properties
     
@@ -25,6 +25,7 @@ import SwiftUI
         lessonPlan.topics
     }
     
+   
     func progress(for title: String) -> Language.Progress {
         if let progressRecord = lessonPlan.progress.first(where: { $0.topicTitle == title }) {
             return progressRecord
@@ -79,6 +80,10 @@ import SwiftUI
         if isCorrect {
             incrementScore(increment: increment)
         }
+    }
+    
+    func nextQuestion() {
+
     }
     
     // MARK: - Private Helpers
