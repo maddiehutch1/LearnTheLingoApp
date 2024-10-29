@@ -11,6 +11,7 @@ import SwiftUI
 struct LearnTheLingoAppApp: App {
     var body: some Scene {
         WindowGroup {
+            // the intial instance that is set and will be used throughout the app
             HomeView(languageViewModel: LanguageViewModel())
         }
     }

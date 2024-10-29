@@ -11,7 +11,7 @@ struct FlashcardView: View {
 
     @State private var isFaceUp = true
     
-    var languageViewModel = LanguageViewModel()
+    var languageViewModel: LanguageViewModel
     
     let listOfTerms: [Language.Term]
     

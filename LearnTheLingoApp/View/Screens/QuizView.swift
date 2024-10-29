@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuizView: View {
     
-    var languageViewModel = LanguageViewModel()
+    var languageViewModel: LanguageViewModel
     
     let topicTitle: String
 
@@ -20,10 +20,11 @@ struct QuizView: View {
     let listOfQuestions: [Language.QuizItem]
 
     var body: some View {
+        Text("\(languageViewModel.getScore())")
         TabView {
             // find a way to connect to database
             ForEach(listOfQuestions, id: \.self) { question in
-                QuizQuestionView(pregunta: question)
+                QuizQuestionView(pregunta: question, languageViewModel: languageViewModel)
             }
         }
         .tabViewStyle(.page)
@@ -37,9 +38,10 @@ struct QuizQuestionView: View {
     
     let pregunta: Language.QuizItem
     
+    var languageViewModel: LanguageViewModel
+    
     @State private var selectedAnswer: String? = nil
     @State private var hasAnswered = false
-    @State private var score = 0
     
     var body: some View {
         VStack {
@@ -59,40 +61,21 @@ struct QuizQuestionView: View {
                         .cornerRadius(30)
                     Text("\(answer)")
                         .foregroundColor(.white)
-//                    if > 0 {
-//                        Rectangle()
-//                            .frame(width: 150, height: 50)
-//                            .foregroundColor(.secondary)
-//                            .cornerRadius(30)
-//                    }
                 }
                 .onTapGesture {
                     selectedAnswer = answer
                     hasAnswered.toggle()
+                    
+                    if let selectedAnswerWithChoice = selectedAnswer {
+                        languageViewModel.isCorrect = languageViewModel.isCorrect(selectedAnswer: selectedAnswerWithChoice, correctAnswer: pregunta.answer)
+                    }
+                    
+                    languageViewModel.scoreTracker(increment: 10)
                 }
             }
         }
-//        // Check if this is the last question
-//        if isLastQuestion() {
-//            Button(action: {
-//                // Action for completing the quiz
-//                print("Quiz Completed")
-//            }) {
-//                Rectangle()
-//                    .frame(width: 150, height: 50)
-//                    .foregroundColor(.secondary)
-//                    .cornerRadius(30)
-//                Text("Complete Quiz")
-//                    .foregroundColor(.white)
-//            }
-//        }
     }
 }
-
-//private func isLastQuestion() -> Bool {
-//        // Assuming you have access to the number of questions
-//        return pregunta.id == listOfQuestions.last?.id // Modify this as per your implementation
-//    }
 
 struct ResultsView: View {
     let correctAnswers: Int
@@ -112,6 +95,10 @@ struct ResultsView: View {
     }
 }
 
-//#Preview {
-//    QuizView(languageViewModel: LanguageViewModel(), topicTitle: "Numbers")
-//}
+#Preview {
+    QuizView(languageViewModel: LanguageViewModel(), topicTitle: "Numbers", listOfQuestions: [Language.QuizItem(
+        question: "What is the Spanish word for the number 7?",
+        options: ["Siete", "Seis", "Ocho"],
+        answer: "Siete"
+    )])
+}

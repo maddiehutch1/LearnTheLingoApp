@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LessonView: View {
-    var languageViewModel = LanguageViewModel()
+    var languageViewModel: LanguageViewModel
 
     let topicTitle: String
     
@@ -22,7 +22,7 @@ struct LessonView: View {
                 Text(topic.lessonText)
                 HStack {
                     NavigationLink {
-                        FlashcardView(languageViewModel: LanguageViewModel(), listOfTerms: topic.vocabulary)
+                        FlashcardView(languageViewModel: languageViewModel, listOfTerms: topic.vocabulary)
                     } label: {
                         ZStack {
                             Rectangle()
@@ -34,7 +34,7 @@ struct LessonView: View {
                         }
                     }
                     NavigationLink {
-                        QuizView(languageViewModel: LanguageViewModel(), topicTitle: topic.title, listOfQuestions: topic.quiz)
+                        QuizView(languageViewModel: languageViewModel, topicTitle: topic.title, listOfQuestions: topic.quiz)
                     } label: {
                         ZStack {
                             Rectangle()

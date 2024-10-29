@@ -12,6 +12,8 @@ import SwiftUI
     // MARK: - Properties
     
     private var lessonPlan: LessonPlan = SpanishLessonPlan()
+    private var score = 0
+    var isCorrect: Bool = false
     
     // MARK: - Model Access
     
@@ -40,10 +42,6 @@ import SwiftUI
         lessonPlan.topics.first(where: { $0.title == title }) ?? lessonPlan.topics[0]
     }
     
-    func checkAnswer(for question: String, answer: String) {
-        
-    }
-    
     // MARK: - User Intents
     
     func toggleLessonRead(for title: String) {
@@ -58,9 +56,30 @@ import SwiftUI
         lessonPlan.toggleQuizPassed(for: title)
     }
     
-//    func selectAnswer(for question: String) -> Language.QuizItem {
-//        lessonPlan.topics.first(
-//    }
+    func isCorrect(selectedAnswer: String, correctAnswer: String) -> Bool {
+        if selectedAnswer == correctAnswer {
+            return true
+        }
+        return false
+    }
+    
+    func getScore() -> Int {
+        return score
+    }
+    
+    func setScore(newScore: Int) {
+        score = newScore
+    }
+    
+    func incrementScore(increment: Int) {
+        score += increment
+    }
+    
+    func scoreTracker(increment: Int) {
+        if isCorrect {
+            incrementScore(increment: increment)
+        }
+    }
     
     // MARK: - Private Helpers
     
