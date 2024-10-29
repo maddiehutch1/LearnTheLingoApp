@@ -87,10 +87,10 @@ import SwiftUI
     
     func chooseAnswer() {
         if isCorrect {
-            soundPlayer.playSound(named: "correctping")
+            soundPlayer.playSound(named: "correctping.mp3")
+        } else {
+            soundPlayer.playSound(named: "incorrectping.mp3")
         }
-            soundPlayer.playSound(named: "incorrectping")
-
     }
     
     // MARK: - Private Helpers
