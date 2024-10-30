@@ -21,7 +21,9 @@ struct FlashcardView: View {
             ForEach(listOfTerms, id: \.self) { card in
                 CardView(isFaceUp: isFaceUp, term: card)
                     .onTapGesture {
-                        isFaceUp.toggle()
+                        withAnimation {
+                            isFaceUp.toggle()
+                        }
                     }
             }
         }
@@ -39,24 +41,20 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-           if isFaceUp {
-               RoundedRectangle(cornerRadius: 10)
-                                .fill(.white)
-               RoundedRectangle(cornerRadius: 10)
-                   .stroke(.orange)
-               Text(term.translation)
+            if isFaceUp {
+                Text(term.translation)
                     .font(.largeTitle)
-           } else {
-               RoundedRectangle(cornerRadius: 10)
-                    .fill(.orange)
-               Text(term.spanishWord)
+            } else {
+                Text(term.spanishWord)
                     .font(.largeTitle)
             }
-            
         }
+            
+        .flashcardify(isFaceUp: isFaceUp)
         .foregroundStyle(.black)
         .frame(maxWidth: 350, maxHeight: 250)
         .shadow(radius: 10, y: 10)
+
     }
 }
 

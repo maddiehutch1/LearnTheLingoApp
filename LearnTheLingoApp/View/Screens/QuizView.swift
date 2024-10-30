@@ -106,6 +106,7 @@ struct QuizQuestionView: View {
                 }
             }
             .padding()
+            Spacer()
             .disabled(hasAnswered)
             if hasAnswered && (index < totalQuestions - 1) {
                 Text("SWIPE NEXT →")
