@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    // call the same instance of LanguageViewModel rather than a brand new one (LanguageViewModel())
     var languageViewModel: LanguageViewModel
     
     private let adaptiveColumns = [
@@ -31,26 +33,54 @@ struct HomeView: View {
                                     Text("\(topic.title)")
                                         .font(.system(size: 20, weight: .bold, design: .rounded))
                                         .foregroundColor(.white)
+                                    
+                                    // shows progress through persistent progress technique in viewmodel
                                     Button {
                                         languageViewModel.toggleLessonRead(for: topic.title)
                                     } label: {
-                                        Text("Lesson read: \(languageViewModel.progress(for: topic.title).lessonRead)")
-                                            .font(.system(size: 15, weight: .light, design: .rounded))
-                                            .foregroundColor(.white)
+                                        ZStack {
+                                            Rectangle()
+                                                .frame(width: 155, height: 30)
+                                                .foregroundColor(
+                                                    languageViewModel.progress(for: topic.title).lessonRead ? .green : .secondary
+                                                )
+                                                .cornerRadius(30)
+                                            Text("Lesson Read")
+                                                .font(.system(size: 15, weight: .light, design: .rounded))
+                                                .foregroundColor(.white)
+                                        }
                                     }
+                                    
                                     Button {
                                         languageViewModel.toggleVocabStudied(for: topic.title)
                                     } label: {
-                                        Text("Flashcards studied: \(languageViewModel.progress(for: topic.title).vocabularyStudied)")
-                                            .font(.system(size: 15, weight: .light, design: .rounded))
-                                            .foregroundColor(.white)
+                                        ZStack {
+                                            Rectangle()
+                                                .frame(width: 155, height: 30)
+                                                .foregroundColor(
+                                                    languageViewModel.progress(for: topic.title).vocabularyStudied ? .green : .secondary
+                                                )
+                                                .cornerRadius(30)
+                                            Text("Flashcards Completed")
+                                                .font(.system(size: 15, weight: .light, design: .rounded))
+                                                .foregroundColor(.white)
+                                        }
                                     }
+                                    
                                     Button {
                                         languageViewModel.toggleQuizPassed(for: topic.title)
                                     } label: {
-                                        Text("Quiz passed: \(languageViewModel.progress(for: topic.title).quizPassed)")
-                                            .font(.system(size: 15, weight: .light, design: .rounded))
-                                            .foregroundColor(.white)
+                                        ZStack {
+                                            Rectangle()
+                                                .frame(width: 155, height: 30)
+                                                .foregroundColor(
+                                                    languageViewModel.progress(for: topic.title).quizPassed ? .green : .secondary
+                                                )
+                                                .cornerRadius(30)
+                                            Text("Quiz Passed")
+                                                .font(.system(size: 15, weight: .light, design: .rounded))
+                                                .foregroundColor(.white)
+                                        }
                                     }
                                 }
                             }

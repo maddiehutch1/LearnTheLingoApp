@@ -45,7 +45,7 @@ struct QuizView: View {
                 TabView(selection: $currentIndex) {
                     // find a way to connect to database
                     ForEach(0..<listOfQuestions.count, id: \.self) { index in
-                        QuizQuestionView(pregunta: listOfQuestions[index], index: index, totalQuestions: listOfQuestions.count, languageViewModel: languageViewModel)
+                        QuizQuestionView(pregunta: listOfQuestions[index], index: index, totalQuestions: listOfQuestions.count, languageViewModel: languageViewModel, topicTitle: topicTitle)
                     }
                 }
                 .tabViewStyle(.page)
@@ -55,7 +55,7 @@ struct QuizView: View {
     }
 }
 
-
+// view for each individual quiz question
 struct QuizQuestionView: View {
     
     let pregunta: Language.QuizItem
@@ -63,15 +63,19 @@ struct QuizQuestionView: View {
     var totalQuestions: Int
     var languageViewModel: LanguageViewModel
     
-    let timer = Timer()
+    let topicTitle: String
+
+    var topic: Language.Topic {
+        languageViewModel.selectedTopic(for: topicTitle)
+    }
     
+    // state variables
     @State private var showResultView = false
     @State private var selectedAnswer: String? = nil
     @State private var hasAnswered = false
     
     var body: some View {
         VStack {
-            //timer.scheduledTimer(timerInterval: 20.0)
             Text("\(pregunta.question)")
                 .font(.title)
                 .multilineTextAlignment(.center) // Centers text within the Text view
@@ -82,6 +86,7 @@ struct QuizQuestionView: View {
                     Rectangle()
                         .frame(width: 150, height: 50)
                         .foregroundColor(
+                            // based on user's answers, can see visually if answer was right or not
                             hasAnswered ?
                             (answer == pregunta.answer ? .green :
                             (answer == selectedAnswer ? .red : .secondary))
@@ -95,7 +100,7 @@ struct QuizQuestionView: View {
                     selectedAnswer = answer
                     hasAnswered = true
                     
-
+                    // unwraps selectedAnswer to see if user's choice was correct... this then determines what sound is played
                     if let selectedAnswerWithChoice = selectedAnswer {
                         languageViewModel.isCorrect = languageViewModel.isCorrect(selectedAnswer: selectedAnswerWithChoice, correctAnswer: pregunta.answer)
                         languageViewModel.chooseAnswer()
@@ -106,15 +111,18 @@ struct QuizQuestionView: View {
                 }
             }
             .padding()
-            Spacer()
             .disabled(hasAnswered)
+            
+            // only display the Swipe next text based on questions and completion of them
             if hasAnswered && (index < totalQuestions - 1) {
                 Text("SWIPE NEXT →")
                     .foregroundColor(.white)
                     .bold()
                     .font(.system(size: 25))
+                
+                // display results page when the last question has been reached and answered
             } else if hasAnswered {
-                NavigationLink(destination: ResultsView(score: languageViewModel.getScore())) {
+                NavigationLink(destination: ResultsView(languageViewModel: languageViewModel, topic: topic, score: languageViewModel.getScore())) {
                     ZStack {
                         Rectangle()
                             .frame(width: 150, height: 50)

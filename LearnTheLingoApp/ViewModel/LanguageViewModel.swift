@@ -27,7 +27,7 @@ import SwiftUI
         lessonPlan.topics
     }
     
-   
+    // function keeps track of user's progress in the app
     func progress(for title: String) -> Language.Progress {
         if let progressRecord = lessonPlan.progress.first(where: { $0.topicTitle == title }) {
             return progressRecord
@@ -59,6 +59,7 @@ import SwiftUI
         lessonPlan.toggleQuizPassed(for: title)
     }
     
+    // used to determine if the user answered the quiz question correctly or not
     func isCorrect(selectedAnswer: String, correctAnswer: String) -> Bool {
         if selectedAnswer == correctAnswer {
             return true
@@ -79,12 +80,14 @@ import SwiftUI
         score += increment
     }
     
+    // calls another function to add to the score
     func scoreTracker(increment: Int) {
         if isCorrect {
             incrementScore(increment: increment)
         }
     }
     
+    // plays sound based on answer selected
     func chooseAnswer() {
         if isCorrect {
             soundPlayer.playSound(named: "correctping.mp3")

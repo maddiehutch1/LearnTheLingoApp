@@ -20,9 +20,29 @@ struct LessonView: View {
         ScrollView {
             VStack {
                 Text(topic.lessonText)
+                    .padding()
+                
+                // another example of persistent progress
+                Button {
+                    languageViewModel.toggleLessonRead(for: topic.title)
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 170, height: 50)
+                            .foregroundColor(
+                                languageViewModel.progress(for: topic.title).lessonRead ? .green : .secondary
+                            )
+                            .cornerRadius(30)
+                        Text("Read Lesson")
+                            .font(.system(size: 15, weight: .light, design: .rounded))
+                            .foregroundColor(.white)
+                    }
+                }
+                
+                // hstack that has buttons linking to other views
                 HStack {
                     NavigationLink {
-                        FlashcardView(languageViewModel: languageViewModel, listOfTerms: topic.vocabulary)
+                        FlashcardView(languageViewModel: languageViewModel, topic: topic, listOfTerms: topic.vocabulary)
                     } label: {
                         ZStack {
                             Rectangle()

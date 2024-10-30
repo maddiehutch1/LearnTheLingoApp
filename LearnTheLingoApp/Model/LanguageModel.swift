@@ -55,6 +55,7 @@ private func key(for title: String, type: String) -> String {
     "\(title).\(type)"
 }
 
+// create a spanish lesson plan based off of protocol
 struct SpanishLessonPlan: LessonPlan {
     
     // MARK: - Read-only Properties
@@ -415,9 +416,9 @@ struct SpanishLessonPlan: LessonPlan {
                     )]
             ),
             
-            // Must-Know Phrases
+            // Basic Phrases
             Language.Topic(
-                title: "Must-Know Phrases",
+                title: "Basic Phrases",
                 lessonText: """
                             To greet someone, say “Hola” (Hello) or “Buenos días” (Good morning). For introductions, use “Me llamo…” (My name is…) or “Soy…” (I am…). Asking how someone is doing is simple with “¿Cómo estás?” (How are you?), and you can respond with “Estoy bien” (I’m good) or “Estoy cansado/a” (I’m tired).
 
